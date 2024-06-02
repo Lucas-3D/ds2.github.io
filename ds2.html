@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: lightgrey; /* Change this to your desired background color */
+        }
+        #plot-container {
+            position: relative;
+            width: 2000px; /* Adjust the width as needed */
+            height: 1000px; /* Adjust the height as needed */
+        }
+        #plotly-div {
+            width: 100%;
+            height: 100%;
+        }
+        .youtube-link-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+        .youtube-link {
+            position: absolute;
+            color: black;
+            text-decoration: underline; /* Underline the text */
+            font-size: 16px;
+            white-space: nowrap;
+            pointer-events: all; /* Make the links clickable */
+            transform: rotate(90deg); /* Rotate the text 90 degrees */
+            font-weight: bold; /* Make the font bold */
+			z-index: 10; /* Set z-index lower than hover text */
+        }
+    </style>
+</head>
+<body>
+    <div id="plot-container">
+        <div id="plotly-div"></div>
+        <div class="youtube-link-container">
+            <a href='https://www.youtube.com/watch?v=Pb83-_IIut4' target='_blank' class='youtube-link' style='left:195px;top:760px;'>The Last Giant</a>
+			<a href='https://www.youtube.com/watch?v=6s8cPkBxecI' target='_blank' class='youtube-link' style='left:245px;top:730px;'>Dragon rider</a>
+			<a href='https://www.youtube.com/watch?v=NECJQy7Q9HA' target='_blank' class='youtube-link' style='left:422px;top:720px;'>Pursuer</a>
+			<a href='https://www.youtube.com/watch?v=PzgAo1Q-5SU' target='_blank' class='youtube-link' style='left:472px;top:702px;'>Fexile Sentry</a>
+			<a href='https://www.youtube.com/watch?v=-HmIawl5_6M' target='_blank' class='youtube-link' style='left:577px;top:632px;'>Ruin Sentinels</a>
+			<a href='https://www.youtube.com/watch?v=PCDYlTPaQfs' target='_blank' class='youtube-link' style='left:640px;top:600px;'>Heide's Dragon</a>
+			<a href='https://www.youtube.com/watch?v=sU2dgE9rBuI' target='_blank' class='youtube-link' style='left:653px;top:595px;'>Scorpioness Najka</a>
+			<a href='https://www.youtube.com/watch?v=iUdudFvwUXQ' target='_blank' class='youtube-link' style='left:670px;top:590px;'>Skeleton Lord Boss</a>
+			<a href='https://www.youtube.com/watch?v=3W5klvMytQA' target='_blank' class='youtube-link' style='left:632px;top:623px;'>Prowling Margus and Congregation</a>
+			<a href='https://www.youtube.com/watch?v=GjgiO6gfz6U' target='_blank' class='youtube-link' style='left:723px;top:540px;'>Dukes Dear Freja</a>
+			<a href='https://www.youtube.com/watch?v=0BcjCcsw2wQ' target='_blank' class='youtube-link' style='left:786px;top:520px;'>Old Dragonslayer</a>
+			<a href='https://www.youtube.com/watch?v=sLrGeqCVD0c' target='_blank' class='youtube-link' style='left:795px;top:520px;'>Royal Rat Vanguard</a>
+			<a href='https://www.youtube.com/watch?v=iqe6OD1xni8' target='_blank' class='youtube-link' style='left:840px;top:495px;'>the Lost Sinner</a>
+			<a href='https://www.youtube.com/watch?v=wJ0XDnmcKSo' target='_blank' class='youtube-link' style='left:857px;top:490px;'>Covetous Demon</a>
+			<a href='https://www.youtube.com/watch?v=4UOhjHluoQE' target='_blank' class='youtube-link' style='left:1020px;top:445px;'>Smelter Demon</a>
+			<a href='https://www.youtube.com/watch?v=87ZFUmtfbls' target='_blank' class='youtube-link' style='left:1077px;top:385px;'>The Rotten</a>
+			<a href='https://www.youtube.com/watch?v=laJz4FpWjbE' target='_blank' class='youtube-link' style='left:1120px;top:375px;'>Twin Dragonrider</a>
+			<a href='https://www.youtube.com/watch?v=qKRgs7AluGE' target='_blank' class='youtube-link' style='left:1145px;top:365px;'>Belfry Gargoyles</a>
+			<a href='https://www.youtube.com/watch?v=OvswDFglfPgex' target='_blank' class='youtube-link' style='left:1243px;top:360px;'>Royal Rat Authority</a>
+			<a href='https://www.youtube.com/watch?v=5s6H34rkrYM' target='_blank' class='youtube-link' style='left:1325px;top:320px;'>Old Iron King</a>
+			<a href='https://www.youtube.com/watch?v=zj266JcKa_g' target='_blank' class='youtube-link' style='left:1351px;top:335px;'>Looking Glass Knight</a>
+			<a href='https://www.youtube.com/watch?v=yOcsrvH6qz8' target='_blank' class='youtube-link' style='left:1396px;top:305px;'>Demon of Song</a>
+			<a href='https://www.youtube.com/watch?v=NRj1Vbpe0I4' target='_blank' class='youtube-link' style='left:1488px;top:260px;'>Velstadt</a>
+			<a href='https://www.youtube.com/watch?v=txVHDyzM2Oo' target='_blank' class='youtube-link' style='left:1475px;top:285px;'>Guardian Dragon</a>
+			<a href='https://www.youtube.com/watch?v=-ORKFokhjkc' target='_blank' class='youtube-link' style='left:1570px;top:225px;'>Ancient Dragon</a>
+			<a href='https://www.youtube.com/watch?v=Zzi3UuDHpEI' target='_blank' class='youtube-link' style='left:1635px;top:160px;'>Vendrick</a>
+			<a href='https://www.youtube.com/watch?v=9_ybaxR7YqY' target='_blank' class='youtube-link' style='left:1583px;top:222px;'>Throne Watcher and Defender</a>
+			<a href='https://www.youtube.com/watch?v=Y-quyNp1HAY' target='_blank' class='youtube-link' style='left:1670px;top:155px;'>Nashandra</a>
+			<a href='https://www.youtube.com/watch?v=iFDEyMgsbNI' target='_blank' class='youtube-link' style='left:1630px;top:209px;'>Aldia, Scholar of the First Sin</a>
+        </div>
+    </div>
+    <script>
+        var plotlyData = {"data": [{
+	"hoverinfo": "text", "hovertext": "1.00 hrs<br>Things Betwixt", "marker": {"color": "rgba(85, 150, 205, 0.5)"},"showlegend": false,
+	"name": "Things Betwixt",
+	"text": "Things Betwixt",
+	"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [0.5], "y": [170], "type": "bar"}, {
+
+	"hoverinfo": "text", "hovertext": "1.00 hrs<br>Marjula", "marker": {"color": "rgba(230, 200, 120, 0.0)"}, "showlegend": false,
+	"name": "Marjula",
+	"text": "Marjula",
+	"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [1.5], "y": [170], "type": "bar"}, {
+
+	"hoverinfo": "text", "hovertext": "1.00 hrs<br>Marjula", "marker": {"color": "rgba(230, 200, 120, 0.8)"},"showlegend": false,
+	"name": "Marjula",
+	"text": "Marjula",
+	"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [1.5], "y": [170], "type": "bar"}, {
+
+	"hoverinfo": "text", "hovertext": "3.00 hrs<br>Forest of the Giants", "marker": {"color": "rgba(115, 115, 70, 0.5)"},"showlegend": false,
+	"name": "Forest of the Giants",
+	"text": "Forest of the Giants",
+	"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [3], "x": [3.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "5.00 hrs<br>Heide's Tower of Flame", "marker": {"color": "rgba(128, 170, 178, 0.5)"},"showlegend": false,
+"name": "Heide's Tower of Flame",
+"text": "Heide's Tower of Flame",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [5], "x": [7.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Shaded Woods", "marker": {"color": "rgba(122, 154, 136, 0.5)"},"showlegend": false,
+"name": "Shaded Woods",
+"text": "Shaded Woods",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [10.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Shrine of Winter", "marker": {"color": "rgba(70, 70, 60, 0.5)"},"showlegend": false,
+"name": "Shrine of Winter",
+"text": "Shrine of Winter", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [11.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Heide's Tower of Flame", "marker": {"color": "rgba(128, 170, 178, 0.5)"}, "showlegend": false,
+"text": "Heide's Tower of Flame",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [12.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>No Man's Wharf", "marker": {"color": "rgba(145, 60, 30, 0.5)"},"showlegend": false,
+"name": "No Man's Wharf",
+"text": "No Man's Wharf", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [13.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>The Lost Bastille", "marker": {"color": "rgba(168, 225, 245, 0.5)"}, "showlegend": false,
+"name": "The Lost Bastille",
+"text": "The Lost Bastille",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [14.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>No Man's Wharf", "marker": {"color": "rgba(145, 60, 30, 0.5)"}, "showlegend": false,
+"text": "No Man's Wharf", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [16.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "4.00 hrs<br>The Lost Bastille", "marker": {"color": "rgba(168, 225, 245, 0.5)"}, "showlegend": false,
+"text": "The Lost Bastille", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [4], "x": [19.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Grave of the saints", "marker": {"color": "rgba(170, 111, 0, 0.5)"}, "showlegend": false,
+"name": "Grave of the saints",
+"text": "Grave of the saints", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [21.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Sinners Rise", "marker": {"color": "rgba(190, 134, 122, 0.5)"}, "showlegend": false,
+"name": "Sinners Rise",
+"text": "Sinners Rise", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [22.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Undead Refuge", "marker": {"color": "rgba(117, 0, 155, 0.5)"}, "showlegend": false,
+"name": "Undead Refuge",
+"text": "Undead Refuge", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [23.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Heide's Tower of Flame", "marker": {"color": "rgba(128, 170, 178, 0.5)"}, "showlegend": false, "showlegend": false,
+"text": "Heide's Tower of Flame", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [24.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Brightstone Cove", "marker": {"color": "rgba(239, 239, 60, 0.5)"}, "showlegend": false,
+"name": "Brightstone Cove",
+"text": "Brightstone Cove", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [25.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Harvest Valley", "marker": {"color": "rgba(0, 255, 0, 0.5)"}, "showlegend": false,
+"name": "Harvest Valley",
+"text": "Harvest Valley", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [26.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>Brightstone Cove", "marker": {"color": "rgba(239, 239, 60, 0.5)"}, "showlegend": false,
+"text": "Brightstone Cove", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [28.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "3.00 hrs<br>Cathedral of Blue", "marker": {"color": "rgba(0, 0, 255, 0.5)"}, "showlegend": false,
+"name": "Cathedral of Blue",
+"text": "Cathedral of Blue", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [3], "x": [30.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>The Gutter", "marker": {"color": "rgba(196, 88, 255, 0.5)"}, "showlegend": false,
+"name": "The Gutter",
+"text": "The Gutter", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [33.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Earthen Peak", "marker": {"color": "rgba(239, 149, 35, 0.5)"}, "showlegend": false,
+"name": "Earthen Peak",
+"text": "Earthen Peak", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [34.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "7.00 hrs<br>Iron Keep", "marker": {"color": "rgba(255, 0, 0, 0.5)"}, "showlegend": false,
+"name": "Iron Keep",
+"text": "Iron Keep", "textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [7], "x": [38.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>Black Gulch", "marker": {"color": "rgba(64, 64, 64, 0.5)"}, "name": "Black Gulch", "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                              Black Gulch",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [43.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "3.00 hrs<br>Drangleic Castle", "marker": {"color": "rgba(113, 131, 135, 0.5)"}, "name": "Drangleic Castle", "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                              Drangleic Castle",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [3], "x": [45.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Belfry Luna", "marker": {"color": "rgba(255, 128, 255, 0.5)"}, "name": "Belfry Luna", "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                        Belfry Luna",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [47.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Forest of the Giants", "marker": {"color": "rgba(115, 115, 70, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                Forest of the Giants",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [48.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>The Pit", "marker": {"color": "rgba(0, 135, 135, 0.5)"}, "showlegend": false,
+"name": "The Pit",
+"text":
+"                                                                                                                                                                                                                                                                                                The Pit",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [49.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Door of the Pharoahs", "marker": {"color": "rgba(0, 40, 70, 0.5)"}, "name": "Door of the Pharoahs", "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                        Door of the Pharoahs",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [50.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Black Gulch", "marker": {"color": "rgba(64, 64, 64, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                                            Black Gulch",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [51.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Door of the Pharoahs", "marker": {"color": "rgba(0, 40, 70, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                        Door of the Pharoahs",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [52.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Shrine of Amana", "marker": {"color": "rgba(212, 255, 124, 0.5)"}, "showlegend": false,
+"name": "Shrine of Amana",
+"text":
+"                                                                                                                                                                                                                                                                                                            Shrine of Amana",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [53.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "3.00 hrs<br>Iron Keep", "marker": {"color": "rgba(255, 0, 0, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                   Iron Keep",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [3], "x": [55.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Drangleic Castle", "marker": {"color": "rgba(113, 131, 135, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                                            Drangleic Castle",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [57.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Shrine of Amana", "marker": {"color": "rgba(212, 255, 124, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                              Shrine of Amana",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [58.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Aldia's Keep", "marker": {"color": "rgba(255, 0, 255, 0.5)"}, "showlegend": false,
+"name": "Aldia's Keep",
+"text":
+"                                                                                                                                                                                                                                                                                        Aldia's Keep",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [59.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>Undead Crypt", "marker": {"color": "rgba(250, 170, 65, 0.5)"}, "showlegend": false,
+"name": "Undead Crypt",
+"text":
+"                                                                                                                                                                                                                                                                                        Undead Crypt",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [61.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Aldia's Keep", "marker": {"color": "rgba(255, 0, 255, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                        Aldia's Keep",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [62.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>Dragon Aerie", "marker": {"color": "rgba(255, 255, 0, 0.5)"}, "showlegend": false,
+"name": "Dragon Aerie", "text":
+"                                                                                                                                                                                                                                                                                        Dragon Aerie",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [64.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "2.00 hrs<br>Dragon Shrine", "marker": {"color": "rgba(200, 255, 170, 0.5)"}, "showlegend": false,
+"name": "Dragon Shrine", "text":
+"                                                                                                                                                                                                                                                                                        Dragon Shrine",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [2], "x": [66.0], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>The Place Unbeknownst", "marker": {"color": "rgba(150, 0, 0, 0.5)"}, "showlegend": false,
+"name": "The Place Unbeknownst", "text":
+"                                                                                                                                                                                                                                                                    The Place Unbeknownst", 
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [67.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "1.00 hrs<br>Undead Crypt", "marker": {"color": "rgba(250, 170, 65, 0.5)"}, "showlegend": false, "text":
+"                                                                                                                                                                                                                                                                                        Undead Crypt", 
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [1], "x": [68.5], "y": [170], "type": "bar"}, {
+
+"hoverinfo": "text", "hovertext": "3.00 hrs<br>Drangleic Castle", "marker": {"color": "rgba(113, 131, 135, 0.5)"}, "showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                        Drangleic Castle",
+"textfont": {"color": "black", "size": 12}, "textposition": "inside", "width": [3], "x": [70.5], "y": [170], "type": "bar"},
+{"hoverinfo": "text",
+"hovertext": "1.00 hrs<br>Marjula",
+"marker": {"color": "rgba(230, 200, 120, 0.8)"},
+"showlegend": false,
+"text":
+"                                                                                                                                                                                                                                                                                              Marjula",
+"textfont": {"color": "black",
+"size": 12},
+"textposition": "inside",
+"width": [1],
+"x": [72.5],
+"y": [170],
+"type": "bar"
+},
+{
+"hoverinfo": "none",
+"marker": {"color": "blue"},
+"mode": "lines",
+"name": "Level",
+"x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73], "y": [12, 15, 17, 20, 22, 25, 30, 35, 38, 40, 41, 43, 48, 52, 56, 57, 59, 61, 64, 68, 71, 74, 78, 80, 82, 84, 86, 90, 95, 96, 97, 99, 100, 102, 104, 105, 106, 108, 109, 110, 111, 112, 118, 121, 124, 126, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 142, 143, 145, 146, 148, 150, 151, 157, 164, 165, 167, 168, 169, 170], "type": "scatter"
+},
+
+{
+"hoverinfo": "none",
+"marker": {"color": "red", "size": 18},
+"mode": "markers",
+"name": "Youtube",
+"x": [5, 7, 14, 17, 22, 25, 26, 27, 28, 29, 32, 33, 34, 35, 42, 44, 47, 48, 53, 56, 58, 59, 62, 63, 67, 69, 70, 71, 72],
+"y": [22, 30, 52, 59, 74, 82, 84, 86, 90, 95, 99, 100, 102, 104, 112, 121, 128, 129, 134, 137, 139, 140, 145, 146, 157, 165, 167, 168, 169], "type": "scatter"
+},
+
+{
+"hoverinfo": "text",
+"marker": {"color": "blue", "size": 10},
+"mode": "markers",
+"name": "Comments",
+"text": ["Cinematics look good", "Gawd so underpowered ESTUS 1", "Character looks a bit funky - This is the same time as Bloodborne?", "Loving it!", "ESTUS 2", "Learning these big knight's patterns", "ESTUS 3", "ESTUS 4", "ESTUS 5", "Seek mightier souls...?", "Cleared no mans wharf first try, going slowly and shitting myself", "Goddamm loving it", "Lost Bastille and Ruin Sentinels need leveling", "ESTUS 6", "Still Levelling", "Want boltstone for mcduff infusement", "Exploring around the lost Bastille, its huge", "Moved the path to get to the Undead Refuge area", "ESTUS 7", "Holding 70K souls", "Brightstone Bonfie - Hurrah!", "Primal bonfire lit", "Leveling for smelter demon and other bosses", "I have Zweihandler.", "Ew.", "First time", "First Time", "ESTUS 8", "Revisiting past areas to find things", "Told to go to the castle", "ESTUS 9", "You need giant souls?", "Poison Cheese", "Consumed all boss souls to get 400,000 souls", "Fin."],
+"x": [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 17, 18, 19, 20, 21, 22, 25, 26, 28, 29, 30, 34, 37, 40, 43, 44, 47, 48, 50, 56, 58, 63, 67, 72, 73],
+"y": [12, 15, 17, 20, 22, 25, 38, 40, 41, 43, 59, 61, 64, 68, 71, 74, 82, 84, 90, 95, 96, 102, 106, 110, 118, 121, 128, 129, 131, 137, 139, 146, 157, 169, 170],
+"type": "scatter"
+}
+],
+
+"layout": {"template": {"data": {"histogram2dcontour": [{"type": "histogram2dcontour", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "choropleth": [{"type": "choropleth", "colorbar": {"outlinewidth": 0, "ticks": ""}}], "histogram2d": [{"type": "histogram2d", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "heatmap": [{"type": "heatmap", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "heatmapgl": [{"type": "heatmapgl", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "contourcarpet": [{"type": "contourcarpet", "colorbar": {"outlinewidth": 0, "ticks": ""}}], "contour": [{"type": "contour", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "surface": [{"type": "surface", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}], "mesh3d": [{"type": "mesh3d", "colorbar": {"outlinewidth": 0, "ticks": ""}}], "scatter": [{"fillpattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}, "type": "scatter"}], "parcoords": [{"type": "parcoords", "line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scatterpolargl": [{"type": "scatterpolargl", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}, "pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "bar"}], "scattergeo": [{"type": "scattergeo", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scatterpolar": [{"type": "scatterpolar", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "histogram": [{"marker": {"pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "histogram"}], "scattergl": [{"type": "scattergl", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scatter3d": [{"type": "scatter3d", "line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scattermapbox": [{"type": "scattermapbox", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scatterternary": [{"type": "scatterternary", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "scattercarpet": [{"type": "scattercarpet", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}, "pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "barpolar"}], "pie": [{"automargin": true, "type": "pie"}]}, "layout": {"autotypenumbers": "strict", "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "hovermode": "closest", "hoverlabel": {"align": "left"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"bgcolor": "#E5ECF6", "angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "ternary": {"bgcolor": "#E5ECF6", "aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]]
+},
+
+"xaxis": {"gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2},
+"yaxis": {"gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "automargin": true,
+"zerolinewidth": 2}, "scene": {
+"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2},
+"yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2},
+"zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2}},
+"shapedefaults": {"line": {"color": "#2a3f5f"}},
+"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1},
+"geo": {"bgcolor": "white", "landcolor": "#E5ECF6", "subunitcolor": "white", "showland": true,"showlakes": true, "lakecolor": "white"},
+"title": {"x": 0.05},
+"mapbox": {"style": "light"}}},
+"margin": {"l": 50, "r": 50, "t": 50, "b": 50},
+"title": {"text": "Dark Souls 2 First Playthrough - Lucas3D"},
+"xaxis": {"title": {"text": "Hours"}}, "yaxis": {"title": {"text": "Level"}},
+"showlegend": true,
+"dragmode": false,
+"barmode": "overlay", "plot_bgcolor": "white", "paper_bgcolor": "lightgrey"}};
+
+
+		var config = {
+			responsive: false,		// Maintains readability and usability across different screen sizes
+			displayModeBar: false,  // Display the mode bar (zoom, pan, etc.)
+			scrollZoom: false     // Enable scroll zooming
+		};
+        Plotly.newPlot('plotly-div', plotlyData.data, plotlyData.layout, config);
+
+        // Hide the original text in the scatter plot
+        var update = {
+            'text': [''] // Set text to empty strings
+        };
+        Plotly.restyle('plotly-div', update, [1]);
+    </script>
+</body>
+</html>
